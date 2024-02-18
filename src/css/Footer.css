@@ -1,0 +1,27 @@
+/*footer css*/
+body{
+  background-color: black;
+}
+.social{
+    display: flex;
+    justify-content:center;
+    gap: 30px;
+    font-size: larger;
+    cursor: pointer;
+  }
+  ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap:30px;
+    cursor:pointer;
+  }
+  li:hover{
+    text-decoration: underline;
+  }
+  .social-hover:hover{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    box-shadow: 0 0 0 10px #161515;
+  }
