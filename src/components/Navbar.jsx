@@ -79,7 +79,7 @@ function Navbar() {
                 <Link
                   className='nav-link text-light'
                   aria-current="page"
-                  to="/signin"
+                  to="/login"
                   onClick={closeMenu}>
                   Sign In
                 </Link>

@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { API } from '../global'
-import '../css/Signin.css'
-import { Link } from 'react-router-dom'
+import '../css/Signup.css'
+import { Link, useNavigate } from 'react-router-dom'
 
-function Signin() {
+function Signup() {
   const [userName, setUserName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [ReEnterpassword, setReEnterPassword] = useState("")
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
+  const navigate = useNavigate()
 
   //handlesignup coding
-  const handlesignin = async () => {
+  const handlesignup = async () => {
     const payload = {
       userName,
       email,
@@ -34,12 +35,13 @@ function Signin() {
     if (data.message) {
       setMessage(data.message);
       setError('');
+      navigate('/login')
     }
   }
 
   return (
     <div className='container m-5 p-4'>
-      <div className='container-middle'>
+      <div className='container-signup'>
       <h3>Create account</h3>
         <label htmlFor="username" className="form-label">Your Name</label>
         <input type="text"
@@ -73,13 +75,13 @@ function Signin() {
           title='For strong Password min of 8 chars combo(A-Za-z0-9)1 special char'
           onChange={(e) => setReEnterPassword(e.target.value)}
         />
-        <button type="submit" className="btn btn-warning mt-3" onClick={handlesignin}>Create your IMDb account</button>
+        <button type="submit" className="btn btn-warning mt-3" onClick={handlesignup}>Create your IMDb account</button>
         <p className='mt-3'>Already have an account? <Link to={'/login'}>Sign In</Link></p>
         {error ? <p className='text-danger m-4'>{error}❗️</p> : ""}
-        <div className='text-center'>{message ? <p children='text-success m-4'>{message} ✅ click Login!</p> : ""}</div>
+        <div className='text-center'>{message ? <p className='text-success m-4'>{message} ✅ click Sign In!</p> : ""}</div>
       </div>
     </div>
   )
 }
 
-export default Signin
+export default Signup

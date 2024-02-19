@@ -1,11 +1,13 @@
 import React from 'react'
 import '../css/Footer.css'
+import { useNavigate } from 'react-router-dom';
 
 function Footer() {
     let date = new Date();
+    const navigate = useNavigate()
     return (
         <div className='container-fluid text-light text-center'>
-            <button className='btn btn-warning'>Sign in for more access</button>
+            <button className='btn btn-warning' onClick={()=>navigate('/login')}>Sign in for more access</button>
             <div className='social p-5'>
                 <i className="fa-brands fa-tiktok social-hover"></i>
                 <i className="fa-brands fa-instagram social-hover"></i>
