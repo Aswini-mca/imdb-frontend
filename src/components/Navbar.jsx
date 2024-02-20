@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../Assets/imdb-icon.png';
 
 function Navbar() {
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate()
+  const [movie, setMovie] = useState("")
 
   // Function to toggle the menu state
   const toggleMenu = () => {
@@ -45,14 +47,20 @@ function Navbar() {
                   className='nav-link text-light'
                   aria-current="page"
                   to="/"
-                  onClick={closeMenu}>
+                  onClick={() => { closeMenu(); }}>
                   Movies
                 </Link>
               </li>
               <li className='nav-item'>
                 <div className="input-group input-group-sm">
-                  <input type="text" className="form-control" placeholder="Enter Movie Name" aria-label="search movie" aria-describedby="button-addon2" />
-                  <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={closeMenu}>
+                  <input type="text" className="form-control"
+                    placeholder="Enter Movie Name"
+                    value={movie}
+                    onChange={(e) => setMovie(e.target.value)}
+                    title='Enter Movie Name'
+                    aria-label="search movie"
+                    aria-describedby="button-addon2" />
+                  <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={() => { navigate(`/movie/${movie}`); closeMenu(); setMovie('') }}>
                     <img src='https://www.iconpacks.net/icons/2/free-search-icon-2903-thumb.png' height={20} alt='...' />
                   </button>
                 </div>

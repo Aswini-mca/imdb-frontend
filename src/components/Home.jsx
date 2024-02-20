@@ -4,16 +4,17 @@ import '../css/Home.css'
 function Home() {
   const [IMDBAPI, setIMDBAPI] = useState([])
   const [query, setQuery] = useState('vijay')
-
+  const API_KEY = process.env.REACT_APP_API_KEY
   const url = `https://imdb146.p.rapidapi.com/v1/find/?query=${query}`;
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '04dbdb7f72msh24b22eb5d29438ap18e2a1jsn3b947aefdcd2',
+      'X-RapidAPI-Key': API_KEY,
       'X-RapidAPI-Host': 'imdb146.p.rapidapi.com'
     }
   };
 
+  // fetchData function to get IMDB API Data
   async function fetchData() {
     await fetch(url, options)
       .then((response) => response.json())
@@ -24,26 +25,26 @@ function Home() {
       })
       .catch((error) =>
         console.error(error)
-
       )
   }
-  
-  useEffect(() => {fetchData()}, [])
+
+  useEffect(() => { fetchData() }, [])
+
   return (
     <div className='container m-5 p-5'>
       <div className='d-flex justify-content-between w-25'>
-        <input 
-        type="text" 
-        className="form-control"
-        id="search"
-        placeholder="Enter query to search"
-        title="Enter Your Query to get results from IMDB API"
-        value={query} 
-        onChange={(e) => setQuery(e.target.value)} />
-        <button className="btn btn-warning" onClick={fetchData}>Search</button>
+        <input
+          type="text"
+          className="form-control"
+          id="search"
+          placeholder="Enter query to search"
+          title="Enter Your Query to get results from IMDB API"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)} />
+        <button className="btn btn-warning" onClick={() => { fetchData(); setQuery(''); }}>Search</button>
       </div>
       <div className='text-center text-light mt-4'>
-      <div
+        <div
           id="carouselExampleControls"
           className="carousel slide"
           data-bs-ride="carousel"
@@ -54,7 +55,7 @@ function Home() {
                 key={index}
                 className={`carousel-item ${index === 0 ? 'active' : ''}`}
               >
-                <h2>{item.knownForTitleText}</h2>
+                <h3>{item.displayNameText}</h3>
                 {item.avatarImageModel && (
                   <img
                     className='imdb-img'
@@ -62,7 +63,7 @@ function Home() {
                     alt={item.knownForTitleText}
                   />
                 )}
-                <p>{item.knownForTitleYear}</p>
+                <h4>{item.knownForJobCategory}</h4>
               </div>
             ))}
           </div>

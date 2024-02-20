@@ -32,6 +32,10 @@ function Login() {
       setError('')
       // navigate('/movie')
     }
+    if (data.token) {
+      setError("");
+      localStorage.setItem("token", data.token)
+    }
   }
 
   return (

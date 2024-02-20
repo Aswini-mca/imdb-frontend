@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Forgetpassword from './components/Forgetpassword';
 import Resetpassword from './components/Resetpassword';
+import Movie from './components/Movie';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<Forgetpassword />} />
           <Route path="/reset-password/:resetToken" element={<Resetpassword />} />
+          <Route path="/movie/:movieName" element={<Movie />} />
         </Routes>
       </main>
       <footer>

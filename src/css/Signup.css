@@ -7,3 +7,11 @@
     width: 350px;
     margin-left: 500px;
 }
+
+/* Responsive styles for smaller screens */
+
+@media screen and (max-width:1024px) {
+    .container-signup {
+        margin-left: 0px;
+    }
+}
