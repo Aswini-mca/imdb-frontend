@@ -59,8 +59,8 @@ function Home() {
                 {item.avatarImageModel && (
                   <img
                     className='imdb-img'
-                    src={item.avatarImageModel.url}
-                    alt={item.knownForTitleText}
+                    src={item.avatarImageModel ? item.avatarImageModel.url : 'https://via.placeholder.com/300'}
+                    alt='Poster not available'
                   />
                 )}
                 <h4>{item.knownForJobCategory}</h4>

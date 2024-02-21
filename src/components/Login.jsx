@@ -30,7 +30,7 @@ function Login() {
     if(data.message){
       setMessage(data.message)
       setError('')
-      // navigate('/movie')
+      navigate('/movieList')
     }
     if (data.token) {
       setError("");
@@ -40,7 +40,7 @@ function Login() {
 
   return (
     <div className='container m-5 p-4'>
-    <div className='container-login'>
+    <div className='container-login mx-auto'>
     <h3>Sign In</h3>
     <label htmlFor="username" className="form-label">Your Name</label>
         <input type="text"

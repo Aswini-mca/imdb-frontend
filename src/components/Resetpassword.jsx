@@ -36,7 +36,7 @@ function Resetpassword() {
   }
   return (
     <div className='container m-5 p-4'>
-      <div className='container-login'>
+      <div className='container-login mx-auto'>
         <h3>Reset Account Password</h3>
         <label htmlFor="password" className="col-form-label">Password</label>
         <input type="password"

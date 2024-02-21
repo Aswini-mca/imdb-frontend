@@ -37,7 +37,7 @@ function Forgetpassword() {
   }
   return (
     <div className='container m-5 p-4'>
-    <div className='container-login'>
+    <div className='container-login mx-auto'>
       <h3>Password assitance</h3>
       <p>Enter the email address associated with your IMDb account.</p>
       <label htmlFor="email" className="form-label">E-mail</label>

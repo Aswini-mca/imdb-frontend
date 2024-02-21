@@ -1,0 +1,27 @@
+.container-create-movie {
+    width: 500px;
+    padding: 30px;
+}
+
+.top-create-page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-producer {
+    width: 500px;
+    padding: 30px;
+}
+
+.container-actor {
+    width: 500px;
+    padding: 30px;
+}
+
+/* Responsive styles for smaller screens */
+
+@media screen and (max-width:768px) {
+    .top-create-page {
+        flex-wrap: wrap;
+    }
+}
