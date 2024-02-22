@@ -48,7 +48,6 @@ function EditMovieForm({ movie }) {
     // Extract actor names from the actors array and join them into a comma-separated string
     const actorNames = movie.actors.map(actor => actor.actorName).join(', ');
 
-
     const formik = useFormik({
         initialValues: {
             movieName: movie.movieName,
@@ -73,6 +72,7 @@ function EditMovieForm({ movie }) {
                 await dispatch(editMovie(movie._id, newValues));
                 formik.resetForm();
                 if (message) {
+                    alert("Movie updated successfully")
                     navigate('/movieList')
                 }
             } catch (error) {
@@ -80,18 +80,7 @@ function EditMovieForm({ movie }) {
             }
         },
     });
-    // Access Redux state variables
-    const movies = useSelector(state => state.movies);
-    const producers = useSelector(state => state.producer);
-    const actors = useSelector(state => state.actor);
-    const msg = useSelector(state => state.message);
-    const err = useSelector(state => state.error);
 
-    console.log('Movies:', movies);
-    console.log('Producers:', producers);
-    console.log('Actors:', actors);
-    console.log('Message:', msg);
-    console.log('Error:', err);
     return (
         <div className='m-5'>
             <h2 className='text-center text-light container' style={{ paddingTop: "50px", paddingBottom: "20px" }}>Edit Movie Page</h2>
@@ -145,12 +134,12 @@ function EditMovieForm({ movie }) {
                         value={formik.values.actors}
                         title="Enter Actors Name separated by comma(eg:Ajith,Vijay,Suriya)" {...formik.getFieldProps('actors')} />
                     {formik.touched.actors && formik.errors.actors ? <div className='text-danger'>*{formik.errors.actors}</div> : null}
-                    <button type="submit" className="btn btn-warning mt-3">Edit Movie</button>
+                    <button type="submit" className="btn btn-warning mt-3">Update</button>
                     {error && <div className='text-danger text-center p-2'>{JSON.stringify(error)}</div>}
-                    {errorMessage && <div className='text-danger text-center'>{JSON.stringify(errorMessage)}</div>}
+                    {errorMessage && <div className='text-danger text-center p-2'>{JSON.stringify(errorMessage)}</div>}
                 </form>
             </div>
-            <div className='text-center p-4'><Link to={'/movie/create'} className='text-light'>Add Producer/Add Actor</Link></div>
+            <div className='d-flex justify-content-around p-4'><Link to={'/movie/create'} className='text-light'>Add Producer/Add Actor</Link><Link to={'/movieList'} className='text-light'>Movie List</Link></div>
         </div>
 
     )

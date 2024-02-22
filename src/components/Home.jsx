@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../css/Home.css'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [IMDBAPI, setIMDBAPI] = useState([])
@@ -32,7 +33,7 @@ function Home() {
 
   return (
     <div className='container m-5 p-5'>
-      <div className='d-flex justify-content-between w-25'>
+      <div className='search-imdb'>
         <input
           type="text"
           className="form-control"
@@ -55,7 +56,7 @@ function Home() {
                 key={index}
                 className={`carousel-item ${index === 0 ? 'active' : ''}`}
               >
-                <h3>{item.displayNameText}</h3>
+                <h2>{item.displayNameText}</h2>
                 {item.avatarImageModel && (
                   <img
                     className='imdb-img'
@@ -87,6 +88,23 @@ function Home() {
           </button>
         </div>
       </div>
+      <h3 className='container text-warning p-4 m-4'>News Feed</h3>
+      <div className='new-container'><img src='https://images.indianexpress.com/2024/01/goat-01012024.jpg'height={150} alt='Goat Poster'/>
+      <p className='p-2 m-2'>Venkat Prabhu's directorial 'GOAT' new schedule begins today in Sri Lanka while vijay will be joining the team soon.
+      The Greatest of All Time is slated to release in late 2024. Notably, GOAT went on floors under the working title Thalapathy 68 in October 2023.
+      <Link to={'http://timesofindia.indiatimes.com/articleshow/106513922.cms?from=mdr&utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst'} target='_blank' rel='noreferrer'> Read more...</Link>
+      </p>
+      </div><br/>
+      <div className='new-container'><img src='https://tamil.cdn.zeenews.com/tamil/sites/default/files/2023/07/12/304062-vidamuyarchi.jpg' height={150} alt='Vidamuyarchi Poster'/>
+      <p className='p-2 m-2'>The company made a public announcement on 18 March 2022, confirming the project; the film was announced under the working title AK62. In late January 2023 however, 
+      Vignesh, who was reportedly given almost six months to complete the pre-production, had failed to impress Ajith with the final script work.
+      <Link to={'https://en.wikipedia.org/wiki/Vidaa_Muyarchi'} target='_blank' rel='noreferrer'> Read more...</Link>
+      </p></div><br/>
+      <div className='new-container'><img src='https://i.ytimg.com/vi/oBlxdr1KbEA/maxresdefault.jpg' height={150} alt='kanguva Poster'/>
+      <p className='p-2 m-2'>Kanguva, also known and marketed as Kanguva: A Mighty Valiant Saga, is an upcoming Indian Tamil-language fantasy action film directed by Siva and produced by K. E. Gnanavel Raja,
+       V. Vamsi Krishna Reddy and Pramod Uppalapati under the banners of Studio Green and UV Creations.
+      <Link to={'https://en.wikipedia.org/wiki/Kanguva'} target='_blank' rel='noreferrer'> Read more...</Link>
+      </p></div><br/>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { addActor, addProducer, createMovie } from '../store/action/movieActions';
 import '../css/Movie.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API } from '../global';
 
 const CreateMovie = ({ token }) => {
@@ -40,6 +40,7 @@ const CreateMovie = ({ token }) => {
                 await dispatch(createMovie(newValues));
                 formik.resetForm();
                 if (message) {
+                    alert('Movie Added Successfully')
                     navigate('/movieList')
                 }
             } catch (error) {
@@ -89,7 +90,8 @@ const CreateMovie = ({ token }) => {
 
     return (
         <div className='m-5'>
-            <h2 className='text-center text-light container p-4'>Create New Movie Page</h2>
+            <h2 className='text-center text-light container' style={{ paddingTop: "50px" }}>Create New Movie Page</h2>
+            <div className='text-center'><Link className='text-light' style={{ fontSize: "larger" }} to={'/movieList'}>Movie List</Link></div>
             <h5 className='text-center text-light container p-4'>You can type Producer name and Actor name are available in the list,
                 If not available kindly add producer details and actors details below this page then you can able to add a new movie</h5>
             <div className='top-create-page'>
@@ -147,7 +149,6 @@ const CreateMovie = ({ token }) => {
                         <button type="submit" className="btn btn-warning mt-3">Create Movie</button>
                         {error && <div className='text-danger text-center p-2'>{JSON.stringify(error)}</div>}
                         {errorMessage && <div className='text-danger text-center'>{JSON.stringify(errorMessage)}</div>}
-
                     </form>
                 </div>
                 <div className='text-light p-2'>
@@ -174,6 +175,7 @@ function AddProducer({ fetchProducer }) {
     const dispatch = useDispatch();
     const [errorMessage, setErrorMessage] = useState('')
     const error = useSelector(state => state.movie.error);
+    const message = useSelector((state) => state.movie.message)
 
     const formik = useFormik({
         initialValues: {
@@ -200,6 +202,9 @@ function AddProducer({ fetchProducer }) {
                 formik.resetForm();
                 fetchProducer();
                 window.scrollTo(0, 0); // Scroll to the top of the page
+                if (message) {
+                    alert("Producer added successfully")
+                }
             } catch (error) {
                 setErrorMessage(error.message);
             }
@@ -254,6 +259,7 @@ function AddActor({ fetchActors }) {
     const dispatch = useDispatch();
     const [errorMessage, setErrorMessage] = useState('')
     const error = useSelector(state => state.movie.error);
+    const message = useSelector((state) => state.movie.message)
 
     const formik = useFormik({
         initialValues: {
@@ -280,6 +286,9 @@ function AddActor({ fetchActors }) {
                 formik.resetForm();
                 fetchActors();
                 window.scrollTo(0, 0); // Scroll to the top of the page
+                if (message) {
+                    alert("Actor added successfully")
+                }
             } catch (error) {
                 setErrorMessage(error.message);
             }

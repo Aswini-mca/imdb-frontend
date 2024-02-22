@@ -22,3 +22,73 @@
     font-size: 24px;
     color: #fff;
 }
+
+.new-container {
+    display: flex;
+    color: white;
+}
+
+p {
+    font-size: larger;
+}
+
+.search-imdb {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+/* Responsive styles for smaller screens */
+
+@media screen and (max-width:1024px) {
+    .search-imdb {
+        width: 300px;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .imdb-img {
+        height: 200px;
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .imdb-img {
+        height: 200px;
+        max-width: 50%;
+    }
+
+    .new-container {
+        display: block;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .imdb-img {
+        height: 200px;
+        max-width: 70%;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+@media screen and (max-width:320px) {
+    .imdb-img {
+        height: 200px;
+        max-width: 100%;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 60px;
+        height: 60px;
+    }
+
+}

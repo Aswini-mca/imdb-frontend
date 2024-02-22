@@ -101,6 +101,15 @@ function Navbar() {
                   </div>
                 </div>
               </li>
+              <li className="nav-item">
+                <Link
+                  className='nav-link text-light'
+                  aria-current="page"
+                  to="/"
+                  onClick={() => { localStorage.removeItem('token');closeMenu(); }}>
+                  🔓
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
